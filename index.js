@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to StackOverflow Test V1");
 });
 
-// app.use("/user", userRoute);
+app.use("/user", userRoute);
 
 const environment =
   process.env.NODE_ENV === "production"
