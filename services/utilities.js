@@ -1,10 +1,10 @@
 const validator = require("validator");
 const crypto = require("crypto");
-
+const ObjectId = require("mongoose").Types.ObjectId;
 function checkEmptyRequestBody(params, fields) {
   const errors = {};
   fields.forEach(element => {
-    if (typeof params[element] === "undefined") {
+    if (typeof params[element] === "undefined" || params[element] === "") {
       errors[element] = element + " is required";
     }
   });
@@ -39,6 +39,20 @@ function checkLoginRequestContent(params) {
   return errors;
 }
 
+function checkAnswerRequestContent(params) {
+  const errors = {};
+  if (!ObjectId.isValid(params.userId)) {
+    errors["userId"] = "invalid userId string";
+  }
+  if (!ObjectId.isValid(params.questionId)) {
+    errors["questionId"] = "Invalid question id ";
+  }
+  if (params.body === "" || !validator.isLength(params.body, { min: 30 })) {
+    errors["body"] = "Answers body should be more than 30 characters";
+  }
+  return errors;
+}
+
 function generateHash() {
   let current_date = new Date().valueOf().toString();
   let random = Math.random().toString();
@@ -51,3 +65,4 @@ module.exports.checkEmptyRequestBody = checkEmptyRequestBody;
 module.exports.checkRequestContent = checkRequestContent;
 module.exports.checkLoginRequestContent = checkLoginRequestContent;
 module.exports.generateHash = generateHash;
+module.exports.checkAnswerRequestContent = checkAnswerRequestContent;
