@@ -1,11 +1,15 @@
 const mongoose = require("mongoose");
 
-const answerSchema = mongoose.Schema({
+const answerSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     default: null
   },
-  text: {
+  questionId: {
+    type: mongoose.Schema.Types.ObjectId,
+    default: null
+  },
+  body: {
     type: String,
     required: true
   },
@@ -22,6 +26,7 @@ const answerSchema = mongoose.Schema({
     default: Date.now
   }
 });
-
-const Answers = new mongoose.model("Answers", answerSchema);
-module.exports = Answers;
+answerSchema.index({ questionId: 1, userId: 1, body: 1 });
+const Answer = new mongoose.model("Answers", answerSchema);
+module.exports.answerSchema = answerSchema;
+module.exports.Answer = Answer;
