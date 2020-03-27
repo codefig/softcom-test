@@ -1,0 +1,4 @@
+{
+  "environment": "production",
+  "jwtPrivateKey": "STACK_JWTKEY"
+}

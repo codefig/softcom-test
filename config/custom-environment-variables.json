@@ -1,0 +1,12 @@
+{
+  "jwtPrivateKey": "STACK_JWTKEY",
+  "database": {
+    "connection": "STACK_DB_CONNECT"
+  },
+  "email": {
+    "host": "STACK_EMAIL_HOST",
+    "port": "STACK_EMAIL_PORT",
+    "user": "STACK_EMAIL_USER",
+    "pass": "STACK_EMAIL_PASS"
+  }
+}
