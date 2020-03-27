@@ -189,10 +189,6 @@ router.get("/questions", async (req, res) => {
   }
 });
 
-router.get("/question", (req, res) => {
-  res.send("Route to view questions");
-});
-
 router.get("/search", async (req, res) => {
   try {
     const errors = Utils.checkEmptyRequestBody(req.query, ["name"]);
