@@ -1,7 +1,7 @@
 {
   "jwtPrivateKey": "STACK_JWTKEY",
   "database": {
-    "connection": "STACK_DB_CONNECT"
+    "connection": "STACK_DB_CONNECTION_URI"
   },
   "email": {
     "host": "STACK_EMAIL_HOST",
