@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 
-const { answerSchema } = require("./Answer.model");
-
 const questionSchema = mongoose.Schema({
   title: {
     type: String,
@@ -18,7 +16,7 @@ const questionSchema = mongoose.Schema({
   },
   answers: {
     type: Array,
-    default: [answerSchema]
+    default: []
   },
   upvote: {
     type: Number,
