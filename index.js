@@ -5,6 +5,8 @@ const JOi = require("@hapi/joi");
 const userRoute = require("./routes/user.route");
 const questionsRoute = require("./routes/question.route");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -14,10 +16,7 @@ app.get("/", (req, res) => {
 app.use("/user", userRoute);
 app.use("/question", questionsRoute);
 
-const environment =
-  process.env.NODE_ENV === "production"
-    ? config.get("database.connection")
-    : "mongodb://localhost/softcom";
+const environment = config.get("database.connection");
 const PORT = process.env.PORT || 3000;
 if (!config.has("jwtPrivateKey")) {
   throw new Error("JWT key not set");
