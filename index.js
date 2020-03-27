@@ -3,6 +3,7 @@ const app = express();
 const config = require("config");
 const JOi = require("@hapi/joi");
 const userRoute = require("./routes/user.route");
+const questionsRoute = require("./routes/question.route");
 const mongoose = require("mongoose");
 app.use(express.json());
 
@@ -11,6 +12,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRoute);
+app.use("/question", questionsRoute);
 
 const environment =
   process.env.NODE_ENV === "production"
