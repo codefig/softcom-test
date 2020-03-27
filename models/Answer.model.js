@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const answerSchema = mongoose.Schema({
-  authorId: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     default: null
   },
@@ -17,7 +17,10 @@ const answerSchema = mongoose.Schema({
     type: Number,
     default: 0
   },
-  timestamp: Date.now()
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 const Answers = new mongoose.model("Answers", answerSchema);
